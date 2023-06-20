@@ -2,11 +2,28 @@ import requests
 import time
 import csv
 import json
+import sys
 
-URL_PUBLIC = "http://localhost:8001"
+URL_PUBLIC = "https://participa.uchile.cl/psifos/api/public"
 
-elections = requests.post(f"{URL_PUBLIC}/elections")
-elections_json = elections.json()
+elections = []
+file_name = sys.argv[1]
+with open(f"{file_name}", "r") as archivo_csv:
+    # Crea un lector de CSV
+        lector_csv = csv.reader(archivo_csv)
+        lector_csv = list(lector_csv)
+
+        # Itera sobre cada fila del archivo CSV
+        for fila in lector_csv:
+            elections += [fila[0]]
+
+elections_json = []
+for election in elections:
+    election_json = requests.get(f"{URL_PUBLIC}/election/{election}").json()
+    elections_json += [election_json]
+
+# elections = requests.post(f"{URL_PUBLIC}/elections")
+# elections_json = elections.json()
 
 cantidad_votos = [["NOMBRE LARGO", "VOTOS RECIBIDOS", "TOTAL PADRÓN"]]
 por_candidatos = []
