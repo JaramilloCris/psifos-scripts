@@ -1,8 +1,7 @@
 from selenium.webdriver.support import expected_conditions as EC
 from selenium.webdriver.common.by import By
 from selenium.webdriver.support.ui import WebDriverWait
-from login_admin import login_admin
-from selenium import webdriver
+from utils import login_admin, create_driver
 from config import URL_ADMIN, TIMEOUT, TRUSTEE_NAME_1, TRUSTEE_NAME_2, TRUSTEE_NAME_3
 
 import time
@@ -247,11 +246,7 @@ def create_question(driver, name_election, file_name):
 if __name__ == "__main__":
     file_name = sys.argv[1]
 
-    options = webdriver.ChromeOptions()
-    options.add_argument("--private")
-
-    # Abrimos el navegador
-    driver = webdriver.Chrome(options=options)
+    driver = create_driver()
 
     login_admin(driver)
 

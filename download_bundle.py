@@ -1,8 +1,7 @@
 from selenium.webdriver.support.ui import WebDriverWait
 from selenium.webdriver.support import expected_conditions as EC
 from selenium.webdriver.common.by import By
-from selenium import webdriver
-from login_admin import login_admin
+from utils import create_driver, login_admin
 from config import TIMEOUT, URL_ADMIN
 
 import time
@@ -36,13 +35,8 @@ if __name__ == "__main__":
     if not os.path.exists(bundle_directory):
         os.makedirs(bundle_directory)
 
-    options = webdriver.ChromeOptions()
-    options.add_argument("--private")
-    prefs = {"download.default_directory": bundle_directory}
-    options.add_experimental_option("prefs", prefs)
-
     # Abrimos el navegador
-    driver = webdriver.Chrome(options=options)
+    driver = create_driver()
     login_admin(driver)
 
     # Abre el archivo CSV en modo lectura

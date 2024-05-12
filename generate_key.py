@@ -1,9 +1,9 @@
 from selenium.webdriver.support.ui import WebDriverWait
 from selenium.webdriver.support import expected_conditions as EC
 from selenium.webdriver.common.by import By
-from selenium import webdriver
 from login_oauth import login_oauth
 from config import TIMEOUT, NAME
+from utils import create_driver
 
 import os
 import csv
@@ -41,15 +41,8 @@ def trustee_generator_key(driver, name_election):
 if __name__ == "__main__":
     file_name = sys.argv[1]
 
-    current_directory = os.path.dirname(os.path.abspath(__file__))
-
-    options = webdriver.ChromeOptions()
-    options.add_argument("--private")
-    prefs = {"download.default_directory": current_directory}
-    options.add_experimental_option("prefs", prefs)
-
     # Abrimos el navegador
-    driver = webdriver.Chrome(options=options)
+    driver = create_driver()
 
     # Abre el archivo CSV en modo lectura
     with open(f"{file_name}", "r") as archivo_csv:
