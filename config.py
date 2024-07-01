@@ -1,17 +1,17 @@
 URL_ADMIN = "https://psifos-participa.uchile.cl/psifos"
 URL_PUBLIC = "http://localhost:8001"
-ADMIN_USER = "admin"
-ADMIN_PASSWORD = "D1TuMGcXKpPE"
+ADMIN_USER = ""
+ADMIN_PASSWORD = ""
 TIMEOUT = 15000
 
-TRUSTEE_NAME_1 = "ahevia"
-TRUSTEE_EMAIL_1 = "ahevia@gmail.com"
+TRUSTEE_NAME_1 = ""
+TRUSTEE_EMAIL_1 = ""
 
-TRUSTEE_NAME_2 = "cjgomez"
-TRUSTEE_EMAIL_2 = "cjgomez@gmail.com"
+TRUSTEE_NAME_2 = ""
+TRUSTEE_EMAIL_2 = ""
 
-TRUSTEE_NAME_3 = "cristobal.jaramillo"
-TRUSTEE_EMAIL_3 = "cristobal@gmail.com"
+TRUSTEE_NAME_3 = ""
+TRUSTEE_EMAIL_3 = ""
 
-NAME = "cristobal.jaramillo"
-PASSWORD = "Helenas69792123"
+NAME = ""
+PASSWORD = ""
