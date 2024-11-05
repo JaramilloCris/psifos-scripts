@@ -1,0 +1,12 @@
+[
+  {
+    "question": "Título 1",
+    "answers": ["Candidato 1", "Candidato 2"],
+    "max_options": 1
+  },
+  {
+    "question": "Título 2",
+    "answers": ["Candidato 1", "Candidato 2", "Candidato 3"],
+    "max_options": 2
+  }
+]
