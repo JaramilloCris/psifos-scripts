@@ -4,10 +4,11 @@ import csv
 import json
 import sys
 
-URL_PUBLIC = "https://participa.uchile.cl/psifos/api/public"
+URL_PUBLIC = "https://psifos-participa.uchile.cl/psifos/api/public"
 
 elections = []
 file_name = sys.argv[1]
+unit = sys.argv[2]
 with open(f"{file_name}", "r") as archivo_csv:
     # Crea un lector de CSV
         lector_csv = csv.reader(archivo_csv)
@@ -57,7 +58,7 @@ for election in elections_json:
 
 
 # Abrir el archivo CSV en modo escritura
-with open("cantidad_votos.csv", "w", newline="") as archivo_csv:
+with open("cantidad_votos_%s.csv" % unit, "w", newline="") as archivo_csv:
     # Crear un escritor CSV
     escritor_csv = csv.writer(archivo_csv)
 

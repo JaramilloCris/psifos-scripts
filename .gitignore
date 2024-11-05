@@ -8,6 +8,7 @@ __pycache__/
 
 /chrome
 *.csv
+.idea/
 
 # Distribution / packaging
 .Python

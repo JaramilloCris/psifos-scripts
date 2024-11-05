@@ -2,7 +2,7 @@ from selenium.webdriver.support import expected_conditions as EC
 from selenium.webdriver.common.by import By
 from selenium.webdriver.support.ui import WebDriverWait
 from utils import login_admin, create_driver
-from config import URL_ADMIN, TIMEOUT, TRUSTEE_NAME_1, TRUSTEE_NAME_2, TRUSTEE_NAME_3
+from config import URL_ADMIN, TIMEOUT, TRUSTEE_NAME_1, TRUSTEE_NAME_2, TRUSTEE_NAME_3, TRUSTEE_ID_1, TRUSTEE_ID_2, TRUSTEE_ID_3, TRUSTEE_EMAIL_1, TRUSTEE_EMAIL_2, TRUSTEE_EMAIL_3
 
 import time
 import csv
@@ -11,7 +11,7 @@ import sys
 import json
 
 
-def create_election(driver, data_election):
+def config_election(driver, data_election):
     # Ir a la página web
     driver.get(f"{URL_ADMIN}/admin/home")
 
@@ -48,18 +48,18 @@ def create_election(driver, data_election):
 
     time.sleep(1)
 
-    # Marcamos en 8 el peso de la elección
+    # Marcamos en 1 el peso de la elección
     weight_input = WebDriverWait(driver, TIMEOUT).until(
         EC.presence_of_element_located((By.XPATH, "//*[@id='weight-input']"))
     )
     weight_input.clear()
     weight_input.send_keys("8")
 
-    # Elección privada
-    private_input = WebDriverWait(driver, TIMEOUT).until(
-        EC.presence_of_element_located((By.XPATH, "//*[@id='private-input']"))
+    # Normalizar resultados
+    normalize_input = WebDriverWait(driver, TIMEOUT).until(
+     EC.presence_of_element_located((By.XPATH, "/html/body/div[1]/div/section[2]/div/div[10]/div/label/input"))
     )
-    private_input.click()
+    normalize_input.click()
 
     # Enviamos los datos para crear
     button_send = WebDriverWait(driver, TIMEOUT).until(
@@ -73,20 +73,15 @@ def create_election(driver, data_election):
         EC.presence_of_element_located((By.ID, "election-subtitle"))
     )
 
-    upload_voters(driver, short_name_election, file_voters)
-
     add_trustee(
-        driver, short_name_election, TRUSTEE_NAME_1, TRUSTEE_NAME_1, TRUSTEE_NAME_1
+        driver, short_name_election, TRUSTEE_NAME_1, TRUSTEE_ID_1, TRUSTEE_EMAIL_1
     )
     add_trustee(
-        driver, short_name_election, TRUSTEE_NAME_2, TRUSTEE_NAME_2, TRUSTEE_NAME_2
+        driver, short_name_election, TRUSTEE_NAME_2, TRUSTEE_ID_2, TRUSTEE_EMAIL_2
     )
     add_trustee(
-        driver, short_name_election, TRUSTEE_NAME_3, TRUSTEE_NAME_3, TRUSTEE_NAME_3
+        driver, short_name_election, TRUSTEE_NAME_3, TRUSTEE_ID_3, TRUSTEE_EMAIL_3
     )
-
-    create_question(driver, short_name_election, file_questions)
-
 
 def upload_voters(driver, name_election, file_name):
     # Ir a la página web
@@ -206,10 +201,11 @@ def add_question(driver, question, question_number):
                 )
             )
         )
-        input_option.send_keys(f"{answer}")
+        for c in answer:
+            input_option.send_keys(f"{c}")
 
 
-def create_question(driver, name_election, file_name):
+def create_questions(driver, name_election, file_name):
     # Ir a la página web
     driver.get(f"{URL_ADMIN}/admin/{name_election}/panel")
 
@@ -245,7 +241,6 @@ def create_question(driver, name_election, file_name):
 
 if __name__ == "__main__":
     file_name = sys.argv[1]
-
     driver = create_driver()
 
     login_admin(driver)
@@ -265,4 +260,8 @@ if __name__ == "__main__":
                 "file_voters": fila[3],
                 "file_questions": fila[4],
             }
-            create_election(driver, data_election)
+            config_election(driver, data_election)
+            if fila[3] != "":
+                upload_voters(driver, data_election["short_name"], fila[3])
+            if fila[4] != "":
+                create_questions(driver, data_election["short_name"], fila[4])

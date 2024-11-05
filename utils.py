@@ -10,13 +10,20 @@ import os
 
 
 def create_driver():
+    # options = webdriver.ChromeOptions()
+    # options.binary_location = "./chrome/chrome"
+    # options.add_argument("--private")
+    # prefs = {"download.default_directory": os.getcwd()}
+    # options.add_experimental_option("prefs", prefs)
+
+    # return webdriver.Chrome('./chrome/chromedriver', options=options)
+
     options = webdriver.ChromeOptions()
-    options.binary_location = "./chrome/chrome"
     options.add_argument("--private")
     prefs = {"download.default_directory": os.getcwd()}
     options.add_experimental_option("prefs", prefs)
 
-    return webdriver.Chrome('./chrome/chromedriver', options=options)
+    return webdriver.Chrome(options=options)
 
 
 def login_admin(driver):
