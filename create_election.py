@@ -203,6 +203,8 @@ def add_question(driver, question, question_number):
         )
         for c in answer:
             input_option.send_keys(f"{c}")
+        for c in answer:
+            input_option.send_keys(f"{c}")
 
 
 def create_questions(driver, name_election, file_name):
