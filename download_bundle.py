@@ -24,6 +24,7 @@ def download_bundle(driver, name_election):
         EC.presence_of_element_located((By.XPATH, "//*[@id='bundle-button-download']"))
     )
     bundle_files_button.click()
+    time.sleep(15)
 
 
 if __name__ == "__main__":

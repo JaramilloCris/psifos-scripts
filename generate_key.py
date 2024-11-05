@@ -1,7 +1,7 @@
 from selenium.webdriver.support.ui import WebDriverWait
 from selenium.webdriver.support import expected_conditions as EC
 from selenium.webdriver.common.by import By
-from login_oauth import login_oauth
+from utils import login_oauth
 from config import TIMEOUT, NAME
 from utils import create_driver
 

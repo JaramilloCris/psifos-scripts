@@ -1,2 +1,11 @@
-election-script,election-script,election-script,clcert_test_auth.csv,question.json
-election-script2,election-script2,election-script,clcert_test_auth.csv,question.json
+eleccion-fcfm-consejo-2024,ELECCIÓN DE REPRESENTANTES ACADÉMICOS(AS) ANTE EL CONSEJO DE LA FACULTAD,,padrones/padron_fcfm_consejo.csv,questions/question_fcfm_consejo.json
+eleccion-fcfm-das-2024,ELECCIÓN DEPARTAMENTO DE ASTRONOMÍA,,padrones/padron_fcfm_das.csv,questions/question_fcfm_das.json
+eleccion-fcfm-dcc-2024,ELECCIÓN DEPARTAMENTO DE CIENCIAS DE LA COMPUTACIÓN,,padrones/padron_fcfm_dcc.csv,questions/question_fcfm_dcc.json
+eleccion-fcfm-dfi-2024,ELECCIÓN DEPARTAMENTO DE FÍSICA,,padrones/padron_fcfm_dfi.csv,questions/question_fcfm_dfi.json
+eleccion-fcfm-dgf-2024,ELECCIÓN DEPARTAMENTO DE GEOFÍSICA,,padrones/padron_fcfm_dgf.csv,questions/question_fcfm_dgf.json
+eleccion-fcfm-dgl-2024,ELECCIÓN DEPARTAMENTO DE GEOLOGÍA,,padrones/padron_fcfm_dgl.csv,questions/question_fcfm_dgl.json
+eleccion-fcfm-dic-2024,ELECCIÓN DEPARTAMENTO DE INGENIERÍA CIVIL,,padrones/padron_fcfm_dic.csv,questions/question_fcfm_dic.json
+eleccion-fcfm-dimec-2024,ELECCIÓN DEPARTAMENTO DE INGENIERÍA MECÁNICA,,padrones/padron_fcfm_dimec.csv,questions/question_fcfm_dimec.json
+eleccion-fcfm-dim-2024,ELECCIÓN DEPARTAMENTO DE INGENIERÍA MATEMÁTICA,,padrones/padron_fcfm_dim.csv,questions/question_fcfm_dim.json
+eleccion-fcfm-dimin-2024,ELECCIÓN DEPARTAMENTO DE INGENIERÍA DE MINAS,,padrones/padron_fcfm_dimin.csv,questions/question_fcfm_dimin.json
+eleccion-fcfm-diqbm-2024,ELECCIÓN DEPARTAMENTO DE INGENIERÍA QUÍMICA BIOTECNOLOGÍA Y MATERIALES,,padrones/padron_fcfm_diqbm.csv,questions/question_fcfm_diqbm.json

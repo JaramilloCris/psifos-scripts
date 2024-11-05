@@ -2,7 +2,7 @@ from selenium.webdriver.support import expected_conditions as EC
 from selenium.webdriver.common.by import By
 from selenium.webdriver.support.ui import WebDriverWait
 from utils import login_admin, create_driver
-from config import URL_ADMIN, TIMEOUT, TRUSTEE_NAME_1, TRUSTEE_NAME_2, TRUSTEE_NAME_3
+from config import URL_ADMIN, TIMEOUT, TRUSTEE_NAME_1, TRUSTEE_NAME_2, TRUSTEE_NAME_3, TRUSTEE_USER_1, TRUSTEE_USER_2, TRUSTEE_USER_3, TRUSTEE_EMAIL_1, TRUSTEE_EMAIL_2, TRUSTEE_EMAIL_3
 
 import time
 import csv
@@ -55,9 +55,9 @@ def create_election(driver, data_election):
     weight_input.clear()
     weight_input.send_keys("8")
 
-    # Elección privada
+    # Elección Normalizada
     private_input = WebDriverWait(driver, TIMEOUT).until(
-        EC.presence_of_element_located((By.XPATH, "//*[@id='private-input']"))
+        EC.presence_of_element_located((By.XPATH, "/html/body/div/div/section[2]/div/div[10]/div/label/input"))
     )
     private_input.click()
 
@@ -76,13 +76,13 @@ def create_election(driver, data_election):
     upload_voters(driver, short_name_election, file_voters)
 
     add_trustee(
-        driver, short_name_election, TRUSTEE_NAME_1, TRUSTEE_NAME_1, TRUSTEE_NAME_1
+        driver, short_name_election, TRUSTEE_NAME_1, TRUSTEE_USER_1, TRUSTEE_EMAIL_1
     )
     add_trustee(
-        driver, short_name_election, TRUSTEE_NAME_2, TRUSTEE_NAME_2, TRUSTEE_NAME_2
+        driver, short_name_election, TRUSTEE_NAME_2, TRUSTEE_USER_2, TRUSTEE_EMAIL_2
     )
     add_trustee(
-        driver, short_name_election, TRUSTEE_NAME_3, TRUSTEE_NAME_3, TRUSTEE_NAME_3
+        driver, short_name_election, TRUSTEE_NAME_3, TRUSTEE_USER_3, TRUSTEE_EMAIL_3
     )
 
     create_question(driver, short_name_election, file_questions)
@@ -206,7 +206,8 @@ def add_question(driver, question, question_number):
                 )
             )
         )
-        input_option.send_keys(f"{answer}")
+        for c in answer:
+            input_option.send_keys(f"{c}")
 
 
 def create_question(driver, name_election, file_name):

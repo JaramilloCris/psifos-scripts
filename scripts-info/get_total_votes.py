@@ -4,7 +4,7 @@ import csv
 import json
 import sys
 
-URL_PUBLIC = "https://participa.uchile.cl/psifos/api/public"
+URL_PUBLIC = "https://psifos-participa.uchile.cl/psifos/api/public"
 
 elections = []
 file_name = sys.argv[1]
