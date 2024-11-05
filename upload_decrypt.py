@@ -3,7 +3,7 @@ from selenium.webdriver.common.by import By
 from selenium.webdriver.support.ui import WebDriverWait
 from selenium import webdriver
 from config import TIMEOUT, NAME
-from login_oauth import login_oauth
+from utils import login_oauth
 
 import sys
 import os

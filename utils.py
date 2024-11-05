@@ -3,6 +3,7 @@ from selenium.webdriver.support import expected_conditions as EC
 from selenium.webdriver.common.by import By
 from selenium.webdriver.common.keys import Keys
 from selenium.webdriver.support.ui import WebDriverWait
+from selenium.webdriver.chrome.service import Service
 from config import NAME, PASSWORD, URL_ADMIN, ADMIN_PASSWORD, ADMIN_USER
 from selenium import webdriver
 
@@ -10,13 +11,13 @@ import os
 
 
 def create_driver():
+    service = Service(executable_path='./chromedriver')
     options = webdriver.ChromeOptions()
-    options.binary_location = "./chrome/chrome"
     options.add_argument("--private")
     prefs = {"download.default_directory": os.getcwd()}
     options.add_experimental_option("prefs", prefs)
 
-    return webdriver.Chrome('./chrome/chromedriver', options=options)
+    return webdriver.Chrome(service=service, options=options)
 
 
 def login_admin(driver):

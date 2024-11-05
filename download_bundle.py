@@ -21,9 +21,12 @@ def download_bundle(driver, name_election):
 
     # Descargamos el archivo de bundle
     bundle_files_button = WebDriverWait(driver, TIMEOUT).until(
-        EC.presence_of_element_located((By.XPATH, "//*[@id='bundle-button-download']"))
+        EC.presence_of_element_located((By.XPATH, "//*[@id='accordion-section']/div/div[2]/div[1]/div[1]/div[2]/div[6]/a"))
     )
     bundle_files_button.click()
+    time.sleep(15)
+
+    time.sleep(10)
 
 
 if __name__ == "__main__":
