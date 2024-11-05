@@ -1,6 +1,6 @@
-URL_ADMIN = "https://psifos-participa.uchile.cl/psifos"
-URL_PUBLIC = "https://psifos-participa.uchile.cl/psifos/api/public"
-ADMIN_USER = "admin"
+URL_ADMIN = ""
+URL_PUBLIC = ""
+ADMIN_USER = ""
 ADMIN_PASSWORD = ""
 TIMEOUT = 15000
 
