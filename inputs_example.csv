@@ -1,1 +1,1 @@
-test-script,TEST SCRIPT,Descripción,padrones/padron_example.csv,questions/questions_example.json
+short_name,long_name,election_description,voters_list_pathname,questions_pathname,max_weight

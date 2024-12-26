@@ -20,6 +20,7 @@ def config_election(driver, data_election):
     description_election = data_election["description"]
     file_voters = data_election["file_voters"]
     file_questions = data_election["file_questions"]
+    max_weight = data_election["max_weight"]
 
     # Accedemos a crear una elección
     button_create = WebDriverWait(driver, TIMEOUT).until(
@@ -48,18 +49,19 @@ def config_election(driver, data_election):
 
     time.sleep(1)
 
-    # Marcamos en 1 el peso de la elección
+    # Marcamos el peso máximo de la elección
     weight_input = WebDriverWait(driver, TIMEOUT).until(
         EC.presence_of_element_located((By.XPATH, "//*[@id='weight-input']"))
     )
     weight_input.clear()
-    weight_input.send_keys("8")
+    weight_input.send_keys(max_weight)
 
-    # Normalizar resultados
-    normalize_input = WebDriverWait(driver, TIMEOUT).until(
-     EC.presence_of_element_located((By.XPATH, "/html/body/div[1]/div/section[2]/div/div[10]/div/label/input"))
-    )
-    normalize_input.click()
+    if int(max_weight) > 1:
+        # Normalizar resultados
+        normalize_input = WebDriverWait(driver, TIMEOUT).until(
+            EC.presence_of_element_located((By.XPATH, "/html/body/div[1]/div/section[2]/div/div[10]/div/label/input"))
+        )
+        normalize_input.click()
 
     # Enviamos los datos para crear
     button_send = WebDriverWait(driver, TIMEOUT).until(
@@ -259,6 +261,7 @@ if __name__ == "__main__":
                 "description": fila[2],
                 "file_voters": fila[3],
                 "file_questions": fila[4],
+                "max_weight": fila[5]
             }
             config_election(driver, data_election)
             if fila[3] != "":
