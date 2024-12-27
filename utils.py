@@ -10,11 +10,11 @@ from selenium import webdriver
 import os
 
 
-def create_driver():
+def create_driver(download_directory=os.getcwd()):
     service = Service(executable_path='./chromedriver')
     options = webdriver.ChromeOptions()
     options.add_argument("--private")
-    prefs = {"download.default_directory": os.getcwd()}
+    prefs = {"download.default_directory": download_directory}
     options.add_experimental_option("prefs", prefs)
 
     return webdriver.Chrome(service=service, options=options)

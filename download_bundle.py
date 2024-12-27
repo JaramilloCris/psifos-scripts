@@ -39,7 +39,7 @@ if __name__ == "__main__":
         os.makedirs(bundle_directory)
 
     # Abrimos el navegador
-    driver = create_driver()
+    driver = create_driver(download_directory=bundle_directory)
     login_admin(driver)
 
     # Abre el archivo CSV en modo lectura

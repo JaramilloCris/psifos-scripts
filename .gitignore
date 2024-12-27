@@ -13,6 +13,7 @@ __pycache__/
 /chrome
 *.csv
 .idea/
+*.txt
 
 # Distribution / packaging
 .Python
