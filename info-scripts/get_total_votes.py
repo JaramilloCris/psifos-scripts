@@ -35,7 +35,6 @@ for election in elections_json:
     election_name = election["name"]
     election_result = json.loads(election["result"]) if election["result"] else None
     election_questions = election["questions"]
-    election_questions = json.loads(election_questions) if election_questions else None
     stats_request = requests.get(
         f"{URL_PUBLIC}/get-election-stats/{election_short_name}"
     )
@@ -68,11 +67,12 @@ with open("cantidad_votos_%s.csv" % unit, "w", newline="") as archivo_csv:
 
 
 # Abrir el archivo CSV en modo escritura
-with open("por_candidato.csv", "w", newline="") as archivo_csv:
-    # Crear un escritor CSV
-    escritor_csv = csv.writer(archivo_csv)
+if election_result:
+    with open("por_candidato.csv", "w", newline="") as archivo_csv:
+        # Crear un escritor CSV
+        escritor_csv = csv.writer(archivo_csv)
 
-    # Escribir los datos en el archivo CSV
-    for election in por_candidatos:
-        for fila in election:
-            escritor_csv.writerow(fila)
+        # Escribir los datos en el archivo CSV
+        for election in por_candidatos:
+            for fila in election:
+                escritor_csv.writerow(fila)
